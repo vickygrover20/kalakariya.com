@@ -1,205 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalogue | Kalakariya</title>
-
 <style>
-
-/* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: #fff;
-}
-
-/* ===== NAVBAR ===== */
-nav {
-  background:#000;
-  padding:15px;
-  text-align:center;
-  border-bottom:1px solid #222;
-}
-
-nav a {
-  color:white;
-  margin:0 15px;
-  text-decoration:none;
-}
-
-nav a:hover {
-  color:#ff0000;
-}
-
-/* ===== HEADING ===== */
-h1 {
-  text-align:center;
-  color:#ff0000;
-  margin-top:30px;
-}
-
-/* ===== CATALOGUE CARDS ===== */
-.catalogue-container {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:20px;
-  padding:40px;
-}
+body { background:#000; color:#fff; font-family:sans-serif; }
+nav { text-align:center; padding:15px; }
+nav a { color:white; margin:10px; }
+h1 { color:#ff0000; text-align:center; }
 
 .card {
-  background:#111;
-  padding:20px;
-  border:1px solid #222;
-  border-radius:10px;
-  width:220px;
-  text-align:center;
+  background:#111; padding:20px; margin:20px auto;
+  width:250px; border:1px solid #222; text-align:center;
 }
-
-.card h3 {
-  margin-bottom:10px;
-}
-
-/* ===== LINKS ===== */
-.link {
-  display:block;
-  margin:10px 0;
-  text-decoration:none;
-}
-
-.view {
-  color:#ff0000;
-}
-
-.download {
-  color:#fff;
-}
-
-.whatsapp-btn {
-  display:block;
-  margin-top:10px;
-  padding:8px;
-  background:#25D366;
-  color:white;
-  border-radius:5px;
-  text-decoration:none;
-}
-
-/* ===== HOVER ===== */
-.card:hover {
-  border-color:#ff0000;
-}
-
+a { display:block; margin:10px; }
 </style>
 </head>
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
 <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="catalogue.html">Catalogue</a>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
 </nav>
 
-<!-- ===== PAGE TITLE ===== -->
-<h1>Our Catalogue</h1>
+<h1>Catalogue</h1>
 
-<!-- ===== CATALOGUE SECTION ===== -->
-<div class="catalogue-container">
+<div class="card">
+<h3>Bedsheets</h3>
+<a href="catalogue/bedsheets.pdf" target="_blank">View</a>
+<a href="catalogue/bedsheets.pdf" download>Download</a>
+</div>
 
-  <!-- ===== BEDSHEETS ===== -->
-  <div class="card">
-    <h3>Bedsheets</h3>
-
-    <a href="catalogue/bedsheets.pdf" target="_blank" class="link view">
-      👀 View Catalogue
-    </a>
-
-    <a href="catalogue/bedsheets.pdf" download class="link download">
-      📥 Download
-    </a>
-
-    <a href="https://wa.me/918168105250?text=I%20am%20interested%20in%20Bedsheets"
-       class="whatsapp-btn">
-      💬 Enquire on WhatsApp
-    </a>
-  </div>
-
-  <!-- ===== CURTAINS ===== -->
-  <div class="card">
-    <h3>Curtains</h3>
-
-    <a href="catalogue/curtains.pdf" target="_blank" class="link view">
-      👀 View Catalogue
-    </a>
-
-    <a href="catalogue/curtains.pdf" download class="link download">
-      📥 Download
-    </a>
-
-    <a href="https://wa.me/918168105250?text=I%20am%20interested%20in%20Curtains"
-       class="whatsapp-btn">
-      💬 Enquire on WhatsApp
-    </a>
-  </div>
-
-  <!-- ===== SOFA FABRICS ===== -->
-  <div class="card">
-    <h3>Sofa Fabrics</h3>
-
-    <a href="catalogue/sofa.pdf" target="_blank" class="link view">
-      👀 View Catalogue
-    </a>
-
-    <a href="catalogue/sofa.pdf" download class="link download">
-      📥 Download
-    </a>
-
-    <a href="https://wa.me/918168105250?text=I%20am%20interested%20in%20Sofa%20Fabrics"
-       class="whatsapp-btn">
-      💬 Enquire on WhatsApp
-    </a>
-  </div>
-
-  <!-- ===== COMFORTERS ===== -->
-  <div class="card">
-    <h3>Comforters</h3>
-
-    <a href="catalogue/comforter.pdf" target="_blank" class="link view">
-      👀 View Catalogue
-    </a>
-
-    <a href="catalogue/comforter.pdf" download class="link download">
-      📥 Download
-    </a>
-
-    <a href="https://wa.me/918168105250?text=I%20am%20interested%20in%20Comforters"
-       class="whatsapp-btn">
-      💬 Enquire on WhatsApp
-    </a>
-  </div>
-
-  <!-- ===== WEDDING SETS ===== -->
-  <div class="card">
-    <h3>Wedding Sets</h3>
-
-    <a href="catalogue/wedding.pdf" target="_blank" class="link view">
-      👀 View Catalogue
-    </a>
-
-    <a href="catalogue/wedding.pdf" download class="link download">
-      📥 Download
-    </a>
-
-    <a href="https://wa.me/918168105250?text=I%20am%20interested%20in%20Wedding%20Sets"
-       class="whatsapp-btn">
-      💬 Enquire on WhatsApp
-    </a>
-  </div>
-
+<div class="card">
+<h3>Curtains</h3>
+<a href="catalogue/curtains.pdf">View</a>
+<a href="catalogue/curtains.pdf" download>Download</a>
 </div>
 
 </body>
