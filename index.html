@@ -3,25 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Kalakariya | Premium Home Décor</title>
 
 <style>
 
 /* ===== GLOBAL ===== */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #000; /* BLACK background */
-  color: #fff; /* default text white */
+  background: #000;
+  color: #fff;
 }
-<!-- ===== NAVBAR ===== -->
-<nav style="background:#000; padding:15px; text-align:center;">
-  <a href="index.html" style="color:white; margin:0 15px;">Home</a>
-  <a href="about.html" style="color:white; margin:0 15px;">About</a>
-  <a href="catalogue.html" style="color:white; margin:0 15px;">Catalogue</a>
-  <a href="#contact" style="color:white; margin:0 15px;">Contact</a>
-</nav>
+
+/* ===== NAVBAR ===== */
+nav {
+  background: #000;
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #222;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #ff0000;
+}
+
 /* ===== HEADER ===== */
 header {
   height: 90vh;
@@ -33,7 +52,6 @@ header {
   position: relative;
 }
 
-/* Dark overlay */
 header::after {
   content: "";
   position: absolute;
@@ -42,23 +60,19 @@ header::after {
   background: rgba(0,0,0,0.7);
 }
 
-/* Text above overlay */
 header div {
   position: relative;
   z-index: 1;
 }
 
-/* 👉 BRAND NAME (RED ONLY) */
 header h1 {
   font-size: 3.5rem;
-  color: #ff0000; /* RED */
-  letter-spacing: 2px;
+  color: #ff0000;
 }
 
-/* Tagline */
 header p {
   font-size: 1.3rem;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* ===== SECTIONS ===== */
@@ -71,7 +85,7 @@ section {
 h2 {
   text-align: center;
   margin-bottom: 30px;
-  color: #ff0000; /* section titles RED */
+  color: #ff0000;
 }
 
 /* ===== PRODUCTS ===== */
@@ -82,7 +96,7 @@ h2 {
 }
 
 .card {
-  background: #111; /* dark card */
+  background: #111;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #222;
@@ -103,7 +117,6 @@ h2 {
 .card h3 {
   padding: 15px;
   text-align: center;
-  color: #fff;
 }
 
 /* ===== ABOUT ===== */
@@ -114,8 +127,6 @@ h2 {
 }
 
 /* ===== CONTACT ===== */
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
 .contact form {
   max-width: 500px;
   margin: auto;
@@ -135,15 +146,10 @@ input, textarea {
 button {
   width: 100%;
   padding: 12px;
-  background: #ff0000; /* RED */
+  background: #ff0000;
   color: white;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-}
-
-button:hover {
-  background: #cc0000;
 }
 
 /* ===== FOOTER ===== */
@@ -152,10 +158,9 @@ footer {
   color: #888;
   text-align: center;
   padding: 20px;
-  font-size: 14px;
 }
 
-/* ===== WHATSAPP BUTTON ===== */
+/* ===== WHATSAPP ===== */
 .whatsapp {
   position: fixed;
   bottom: 20px;
@@ -171,6 +176,14 @@ footer {
 </head>
 
 <body>
+
+<!-- ===== NAVBAR ===== -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="catalogue.html">Catalogue</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <!-- ===== HEADER ===== -->
 <header>
@@ -220,12 +233,11 @@ footer {
   <p>
     Kalakariya is a premium home décor brand specializing in high-quality
     bedsheets, curtains, sofa fabrics, comforter sets, and wedding collections.
-    We bring elegance, comfort, and craftsmanship together to enhance every space.
   </p>
 </section>
 
 <!-- ===== CONTACT ===== -->
-<section class="contact">
+<section id="contact" class="contact">
   <h2>Contact Us</h2>
 
   <form action="https://formspree.io/f/yourformid" method="POST">
@@ -240,15 +252,13 @@ footer {
 <footer>
   <p>© 2026 Kalakariya. All Rights Reserved.</p>
 
-  <p style="font-size:12px; margin-top:10px;">
-    Disclaimer: Product images are for representation purposes only. 
-    Actual products may vary in color, design, and appearance. 
-    All information provided on this website is subject to change without prior notice.
+  <p style="font-size:12px;">
+    Disclaimer: Product images are for representation purposes only.
   </p>
 </footer>
 
 <!-- ===== WHATSAPP ===== -->
-<a href="https://wa.me/918168105250" class="whatsapp">
+<a href="https://wa.me/919999999999" class="whatsapp">
   Chat on WhatsApp
 </a>
 
