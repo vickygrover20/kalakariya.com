@@ -6,11 +6,7 @@
 <title>Kalakariya | Premium Home Décor</title>
 
 <style>
-
-/* ===== GLOBAL ===== */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
@@ -19,29 +15,21 @@ body {
   color: #fff;
 }
 
-/* ===== NAVBAR ===== */
+/* NAVBAR */
 nav {
   background: #000;
   padding: 15px;
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
   border-bottom: 1px solid #222;
 }
-
 nav a {
   color: white;
   margin: 0 15px;
   text-decoration: none;
-  font-weight: 500;
 }
+nav a:hover { color: #ff0000; }
 
-nav a:hover {
-  color: #ff0000;
-}
-
-/* ===== HEADER ===== */
+/* HEADER */
 header {
   height: 90vh;
   background: url('https://images.unsplash.com/photo-1616627987410-7a4c98a1c2d2') center/cover;
@@ -51,7 +39,6 @@ header {
   text-align: center;
   position: relative;
 }
-
 header::after {
   content: "";
   position: absolute;
@@ -59,125 +46,57 @@ header::after {
   height: 100%;
   background: rgba(0,0,0,0.7);
 }
+header div { position: relative; z-index: 1; }
+header h1 { color: #ff0000; font-size: 3.5rem; }
+header p { color: #fff; }
 
-header div {
-  position: relative;
-  z-index: 1;
-}
+/* SECTION */
+section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+h2 { text-align: center; color: #ff0000; }
 
-header h1 {
-  font-size: 3.5rem;
-  color: #ff0000;
-}
-
-header p {
-  font-size: 1.3rem;
-  color: #fff;
-}
-
-/* ===== SECTIONS ===== */
-section {
-  padding: 60px 20px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #ff0000;
-}
-
-/* ===== PRODUCTS ===== */
+/* PRODUCTS */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
-
 .card {
   background: #111;
+  border: 1px solid #222;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #222;
   transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #ff0000;
-}
-
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-}
-
-.card h3 {
-  padding: 15px;
-  text-align: center;
-}
-
-/* ===== ABOUT ===== */
-.about {
-  text-align: center;
-  line-height: 1.6;
-  color: #ccc;
-}
-
-/* ===== CONTACT ===== */
-.contact form {
-  max-width: 500px;
-  margin: auto;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 5px;
-  border: 1px solid #444;
-  background: #111;
-  color: #fff;
-}
-
-/* ===== BUTTON ===== */
-button {
-  width: 100%;
-  padding: 12px;
-  background: #ff0000;
-  color: white;
-  border: none;
   cursor: pointer;
 }
+.card:hover { border-color: #ff0000; transform: translateY(-5px); }
+.card img { width: 100%; height: 220px; object-fit: cover; }
+.card h3 { text-align: center; padding: 10px; }
 
-/* ===== FOOTER ===== */
-footer {
-  background: #000;
-  color: #888;
-  text-align: center;
-  padding: 20px;
+/* CONTACT */
+input, textarea {
+  width: 100%; padding: 12px; margin: 10px 0;
+  background: #111; border: 1px solid #444; color: #fff;
+}
+button {
+  width: 100%; padding: 12px;
+  background: #ff0000; color: white; border: none;
 }
 
-/* ===== WHATSAPP ===== */
+/* FOOTER */
+footer { text-align: center; padding: 20px; color: #888; }
+
+/* WHATSAPP */
 .whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  padding: 12px 16px;
-  border-radius: 50px;
+  position: fixed; bottom: 20px; right: 20px;
+  background: #25D366; color: white;
+  padding: 12px; border-radius: 50px;
   text-decoration: none;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
 <nav>
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
@@ -185,7 +104,6 @@ footer {
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- ===== HEADER ===== -->
 <header>
   <div>
     <h1>Kalakariya</h1>
@@ -193,74 +111,63 @@ footer {
   </div>
 </header>
 
-<!-- ===== PRODUCTS ===== -->
 <section>
   <h2>Our Collection</h2>
-
   <div class="products">
 
-    <div class="card">
-      <img src="images/bedsheet.jpg">
-      <h3>Bedsheets</h3>
-    </div>
+    <a href="catalogue/bedsheets.pdf" target="_blank">
+      <div class="card">
+        <img src="images/bedsheet.jpg">
+        <h3>Bedsheets</h3>
+      </div>
+    </a>
 
-    <div class="card">
-      <img src="images/curtains.jpg">
-      <h3>Curtains</h3>
-    </div>
+    <a href="catalogue/curtains.pdf" target="_blank">
+      <div class="card">
+        <img src="images/curtains.jpg">
+        <h3>Curtains</h3>
+      </div>
+    </a>
 
-    <div class="card">
-      <img src="images/sofa.jpg">
-      <h3>Sofa Fabrics</h3>
-    </div>
+    <a href="catalogue/sofa.pdf" target="_blank">
+      <div class="card">
+        <img src="images/sofa.jpg">
+        <h3>Sofa Fabrics</h3>
+      </div>
+    </a>
 
-    <div class="card">
-      <img src="images/comforter.jpg">
-      <h3>AC Comforter Sets</h3>
-    </div>
+    <a href="catalogue/comforter.pdf" target="_blank">
+      <div class="card">
+        <img src="images/comforter.jpg">
+        <h3>Comforters</h3>
+      </div>
+    </a>
 
-    <div class="card">
-      <img src="images/wedding.jpg">
-      <h3>Wedding Milani Sets</h3>
-    </div>
+    <a href="catalogue/wedding.pdf" target="_blank">
+      <div class="card">
+        <img src="images/wedding.jpg">
+        <h3>Wedding Sets</h3>
+      </div>
+    </a>
 
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section class="about">
-  <h2>About Kalakariya</h2>
-  <p>
-    Kalakariya is a premium home décor brand specializing in high-quality
-    bedsheets, curtains, sofa fabrics, comforter sets, and wedding collections.
-  </p>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact" class="contact">
+<section id="contact">
   <h2>Contact Us</h2>
-
   <form action="https://formspree.io/f/yourformid" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message"></textarea>
-    <button type="submit">Send Inquiry</button>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+    <textarea placeholder="Message"></textarea>
+    <button>Send</button>
   </form>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer>
-  <p>© 2026 Kalakariya. All Rights Reserved.</p>
-
-  <p style="font-size:12px;">
-    Disclaimer: Product images are for representation purposes only.
-  </p>
+  © 2026 Kalakariya
 </footer>
 
-<!-- ===== WHATSAPP ===== -->
-<a href="https://wa.me/919999999999" class="whatsapp">
-  Chat on WhatsApp
-</a>
+<a href="https://wa.me/918168105250" class="whatsapp">Chat</a>
 
 </body>
 </html>
