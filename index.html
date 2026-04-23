@@ -17,6 +17,15 @@ body {
   color: #e6e6e6;
 }
 
+/* FIX LINK COLORS */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+
 /* ===== NAVBAR ===== */
 nav {
   display: flex;
@@ -26,7 +35,6 @@ nav {
   border-bottom: 1px solid #111;
   position: sticky;
   top: 0;
-  z-index: 1000;
 }
 
 .logo {
@@ -36,13 +44,7 @@ nav {
 }
 
 nav a {
-  color: #e6e6e6;
   margin-left: 20px;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: #ff3b3b;
 }
 
 /* ===== HERO ===== */
@@ -72,32 +74,37 @@ header::after {
 .hero h1 {
   font-size: 3.5rem;
   color: #b30000;
-  letter-spacing: 3px;
 }
 
 .hero p {
-  margin: 15px 0;
+  max-width: 600px;
+  margin: 15px auto;
+  line-height: 1.6;
+  color: #ccc;
 }
 
 .hero a {
   margin: 10px;
   padding: 12px 25px;
-  text-decoration: none;
   display: inline-block;
 }
 
+/* BUTTONS */
 .btn-red {
   background: #b30000;
   color: white;
 }
 
-.btn-outline {
-  border: 1px solid #b30000;
+.btn-red:hover { background: #ff3b3b; }
+
+.btn-whatsapp {
+  background: #25D366;
   color: white;
 }
 
-.btn-red:hover { background: #ff3b3b; }
-.btn-outline:hover { background: #b30000; }
+.btn-whatsapp:hover {
+  background: #1ebe5d;
+}
 
 /* ===== PRODUCTS ===== */
 section {
@@ -123,7 +130,6 @@ h2 {
   border-radius: 10px;
   overflow: hidden;
   transition: 0.3s;
-  cursor: pointer;
 }
 
 .card:hover {
@@ -158,16 +164,11 @@ h2 {
   padding: 12px 25px;
   background: #b30000;
   color: white;
-  text-decoration: none;
 }
 
 /* ===== WHY ===== */
 .why {
   text-align: center;
-}
-
-.why p {
-  margin: 10px 0;
 }
 
 /* ===== CTA ===== */
@@ -180,14 +181,30 @@ h2 {
   background: #25D366;
   padding: 15px 25px;
   color: white;
-  text-decoration: none;
+}
+
+/* ===== CONTACT ===== */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #111;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #b30000;
+  color: white;
+  border: none;
 }
 
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
   padding: 20px;
-  background: #000;
   color: #777;
 }
 
@@ -200,10 +217,9 @@ footer {
   padding: 12px;
   border-radius: 50px;
   color: white;
-  text-decoration: none;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 @media(max-width:600px){
   .hero h1 { font-size: 2rem; }
 }
@@ -213,7 +229,7 @@ footer {
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!-- NAVBAR -->
 <nav>
   <div class="logo">KALAKARIYA&reg;</div>
   <div>
@@ -224,18 +240,23 @@ footer {
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <header>
   <div class="hero">
     <h1>KALAKARIYA&reg;</h1>
-    <p>Redefining Comfort & Elegance in Every Home</p>
     
+    <p>
+      Redefining Comfort & Elegance in Every Home.<br>
+      Discover premium fabrics, timeless designs, and curated collections 
+      crafted to transform your living spaces into a statement of style.
+    </p>
+
     <a href="catalogue.html" class="btn-red">View Collection</a>
-    <a href="https://wa.me/919034840539" class="btn-outline">WhatsApp</a>
+    <a href="https://wa.me/919034840539" class="btn-whatsapp">💬 WhatsApp</a>
   </div>
 </header>
 
-<!-- ===== PRODUCTS ===== -->
+<!-- PRODUCTS -->
 <section>
   <h2>Our Collection</h2>
   <div class="products">
@@ -278,13 +299,13 @@ footer {
   </div>
 </section>
 
-<!-- ===== CATALOGUE STRIP ===== -->
+<!-- STRIP -->
 <div class="strip">
   <h2>Explore Full Collection</h2>
   <a href="catalogue.html">Download Catalogue</a>
 </div>
 
-<!-- ===== WHY CHOOSE US ===== -->
+<!-- WHY -->
 <section class="why">
   <h2>Why Choose Kalakariya</h2>
   <p>✔ Premium Quality Materials</p>
@@ -293,15 +314,17 @@ footer {
   <p>✔ Trusted by Customers</p>
 </section>
 
-<!-- ===== CTA ===== -->
+<!-- CTA -->
 <div class="cta">
   <h2>Ready to Upgrade Your Home?</h2>
   <a href="https://wa.me/919034840539">Chat on WhatsApp</a>
 </div>
 
-<!-- ===== CONTACT ===== -->
+<!-- CONTACT -->
 <section id="contact">
   <h2>Contact Us</h2>
+
+  <!-- ⚠️ UPDATE FORM ID HERE -->
   <form action="https://formspree.io/f/yourformid" method="POST">
     <input type="text" placeholder="Your Name" required>
     <input type="email" placeholder="Your Email" required>
@@ -310,7 +333,7 @@ footer {
   </form>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer>
   <p>© 2026 Kalakariya&reg;. All Rights Reserved.</p>
   <p style="font-size:12px;">
