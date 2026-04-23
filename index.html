@@ -18,13 +18,8 @@ body {
 }
 
 /* FIX LINK COLORS */
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:visited {
-  color: inherit;
-}
+a { color: inherit; text-decoration: none; }
+a:visited { color: inherit; }
 
 /* ===== NAVBAR ===== */
 nav {
@@ -41,10 +36,6 @@ nav {
   color: #b30000;
   font-weight: bold;
   letter-spacing: 2px;
-}
-
-nav a {
-  margin-left: 20px;
 }
 
 /* ===== HERO ===== */
@@ -66,10 +57,7 @@ header::after {
   background: rgba(0,0,0,0.75);
 }
 
-.hero {
-  position: relative;
-  z-index: 1;
-}
+.hero { position: relative; z-index: 1; }
 
 .hero h1 {
   font-size: 3.5rem;
@@ -83,27 +71,17 @@ header::after {
   color: #ccc;
 }
 
-.hero a {
-  margin: 10px;
-  padding: 12px 25px;
-  display: inline-block;
-}
-
 /* BUTTONS */
 .btn-red {
   background: #b30000;
+  padding: 12px 25px;
   color: white;
 }
-
-.btn-red:hover { background: #ff3b3b; }
-
 .btn-whatsapp {
   background: #25D366;
+  padding: 12px 25px;
   color: white;
-}
-
-.btn-whatsapp:hover {
-  background: #1ebe5d;
+  margin-left: 10px;
 }
 
 /* ===== PRODUCTS ===== */
@@ -141,16 +119,6 @@ h2 {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  transition: 0.3s;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-}
-
-.card h3 {
-  text-align: center;
-  padding: 10px;
 }
 
 /* ===== STRIP ===== */
@@ -158,29 +126,6 @@ h2 {
   background: #0d0d0d;
   text-align: center;
   padding: 40px;
-}
-
-.strip a {
-  padding: 12px 25px;
-  background: #b30000;
-  color: white;
-}
-
-/* ===== WHY ===== */
-.why {
-  text-align: center;
-}
-
-/* ===== CTA ===== */
-.cta {
-  text-align: center;
-  padding: 60px;
-}
-
-.cta a {
-  background: #25D366;
-  padding: 15px 25px;
-  color: white;
 }
 
 /* ===== CONTACT ===== */
@@ -201,6 +146,13 @@ button {
   border: none;
 }
 
+/* ===== MAP ===== */
+.map iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
@@ -217,11 +169,6 @@ footer {
   padding: 12px;
   border-radius: 50px;
   color: white;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .hero h1 { font-size: 2rem; }
 }
 
 </style>
@@ -244,7 +191,6 @@ footer {
 <header>
   <div class="hero">
     <h1>KALAKARIYA&reg;</h1>
-    
     <p>
       Redefining Comfort & Elegance in Every Home.<br>
       Discover premium fabrics, timeless designs, and curated collections 
@@ -302,29 +248,25 @@ footer {
 <!-- STRIP -->
 <div class="strip">
   <h2>Explore Full Collection</h2>
-  <a href="catalogue.html">Download Catalogue</a>
-</div>
-
-<!-- WHY -->
-<section class="why">
-  <h2>Why Choose Kalakariya</h2>
-  <p>✔ Premium Quality Materials</p>
-  <p>✔ Modern & Elegant Designs</p>
-  <p>✔ Affordable Luxury</p>
-  <p>✔ Trusted by Customers</p>
-</section>
-
-<!-- CTA -->
-<div class="cta">
-  <h2>Ready to Upgrade Your Home?</h2>
-  <a href="https://wa.me/919034840539">Chat on WhatsApp</a>
+  <a href="catalogue.html" class="btn-red">Download Catalogue</a>
 </div>
 
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact Us</h2>
 
-  <!-- ⚠️ UPDATE FORM ID HERE -->
+  <p style="text-align:center; color:#ccc;">
+    📍 Manmohan Nagar, Babail Road, Panipat, Haryana
+  </p>
+
+  <!-- MAP -->
+  <div class="map">
+    <iframe 
+      src="https://maps.google.com/maps?q=Panipat%20Haryana&t=&z=13&ie=UTF8&iwloc=&output=embed">
+    </iframe>
+  </div>
+
+  <!-- FORM -->
   <form action="https://formspree.io/f/yourformid" method="POST">
     <input type="text" placeholder="Your Name" required>
     <input type="email" placeholder="Your Email" required>
@@ -336,6 +278,8 @@ footer {
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Kalakariya&reg;. All Rights Reserved.</p>
+  <p>📍 Manmohan Nagar, Babail Road, Panipat, Haryana</p>
+  <p style="font-size:12px;">Powered by Satkartar Handloom</p>
   <p style="font-size:12px;">
     Disclaimer: Product images are for representation purposes only.
   </p>
