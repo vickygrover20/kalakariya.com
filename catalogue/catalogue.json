@@ -1,0 +1,26 @@
+[
+    {
+        "category": "Bedsheets",
+        "image": "images/bedsheet.jpg",
+        "catalogues": [
+            {
+                "title": "Royal Collection",
+                "pdf": "catalogue/bedsheets/Royal Collection.pdf"
+            },
+            {
+                "title": "Premium Collection",
+                "pdf": "catalogue/bedsheets/Premium Collection.pdf"
+            }
+        ]
+    },
+    {
+        "category": "Curtains",
+        "image": "images/curtains.jpg",
+        "catalogues": [
+            {
+                "title": "Designer Curtains",
+                "pdf": "catalogue/curtains/Designer Curtains.pdf"
+            }
+        ]
+    }
+]
