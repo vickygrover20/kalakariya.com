@@ -173,7 +173,45 @@ footer {
 
 </style>
 </head>
+/* ===== To handle catalogue folder ===== */
+<script>
 
+fetch("catalogue.json")
+    .then(response => response.json())
+    .then(data => {
+
+        const container = document.getElementById("products");
+
+        data.forEach(category => {
+
+            const firstCatalogue = category.catalogues[0];
+
+            container.innerHTML += `
+                <a href="catalogue.html?category=${encodeURIComponent(category.category)}">
+                    <div class="card">
+                        <img src="${category.image}" alt="${category.category}" loading="lazy">
+                        <h3>${category.category}</h3>
+                        <p style="padding:0 15px 15px;color:#aaa;">
+                            ${category.catalogues.length} Collection${category.catalogues.length > 1 ? "s" : ""}
+                        </p>
+                    </div>
+                </a>
+            `;
+
+        });
+
+    })
+    .catch(error => {
+
+        console.error(error);
+
+        document.getElementById("products").innerHTML =
+            "<p>Unable to load catalogue.</p>";
+
+    });
+
+</script>
+  
 <body>
 
 <!-- NAVBAR -->
@@ -203,46 +241,12 @@ footer {
 </header>
 
 <!-- PRODUCTS -->
+<!-- PRODUCTS -->
 <section>
-  <h2>Our Collection</h2>
-  <div class="products">
+    <h2>Our Collection</h2>
 
-    <a href="catalogue/bedsheets.pdf" target="_blank">
-      <div class="card">
-        <img src="images/bedsheet.jpg">
-        <h3>Bedsheets</h3>
-      </div>
-    </a>
+    <div class="products" id="products"></div>
 
-    <a href="catalogue/curtains.pdf" target="_blank">
-      <div class="card">
-        <img src="images/curtains.jpg">
-        <h3>Curtains</h3>
-      </div>
-    </a>
-
-    <a href="catalogue/sofa.pdf" target="_blank">
-      <div class="card">
-        <img src="images/sofa.jpg">
-        <h3>Sofa Fabrics</h3>
-      </div>
-    </a>
-
-    <a href="catalogue/comforter.pdf" target="_blank">
-      <div class="card">
-        <img src="images/comforter.jpg">
-        <h3>Comforters</h3>
-      </div>
-    </a>
-
-    <a href="catalogue/wedding.pdf" target="_blank">
-      <div class="card">
-        <img src="images/wedding.jpg">
-        <h3>Wedding Sets</h3>
-      </div>
-    </a>
-
-  </div>
 </section>
 
 <!-- STRIP -->
