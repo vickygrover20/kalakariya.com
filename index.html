@@ -1,296 +1,530 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Kalakariya | Premium Home Décor</title>
 
 <style>
 
-/* ===== GLOBAL ====== */
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: #e6e6e6;
+/* ===== GLOBAL ===== */
+html{
+    scroll-behavior:smooth;
 }
 
-/* FIX LINK COLORS */
-a { color: inherit; text-decoration: none; }
-a:visited { color: inherit; }
+body{
+    margin:0;
+    font-family:'Segoe UI',sans-serif;
+    background:#000;
+    color:#e6e6e6;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+a:visited{
+    color:inherit;
+}
 
 /* ===== NAVBAR ===== */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 40px;
-  background: #000;
-  border-bottom: 1px solid #111;
-  position: sticky;
-  top: 0;
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:#000;
+    border-bottom:1px solid #111;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.logo {
-  color: #b30000;
-  font-weight: bold;
-  letter-spacing: 2px;
+.logo{
+    color:#b30000;
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+nav div:last-child{
+    display:flex;
+    gap:20px;
+}
+
+nav a:hover{
+    color:#b30000;
 }
 
 /* ===== HERO ===== */
-header {
-  height: 90vh;
-  background: url('https://images.unsplash.com/photo-1616627987410-7a4c98a1c2d2') center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
+
+header{
+    height:90vh;
+    background:url("https://images.unsplash.com/photo-1616627987410-7a4c98a1c2d2") center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
 }
 
-header::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.75);
+header::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.72);
 }
 
-.hero { position: relative; z-index: 1; }
-
-.hero h1 {
-  font-size: 3.5rem;
-  color: #b30000;
+.hero{
+    position:relative;
+    z-index:10;
 }
 
-.hero p {
-  max-width: 600px;
-  margin: 15px auto;
-  line-height: 1.6;
-  color: #ccc;
+.hero h1{
+    font-size:60px;
+    color:#b30000;
 }
 
-/* BUTTONS */
-.btn-red {
-  background: #b30000;
-  padding: 12px 25px;
-  color: white;
+.hero p{
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+    color:#ddd;
 }
-.btn-whatsapp {
-  background: #25D366;
-  padding: 12px 25px;
-  color: white;
-  margin-left: 10px;
+
+/* ===== BUTTONS ===== */
+
+.btn-red{
+
+    display:inline-block;
+    margin-top:20px;
+    background:#b30000;
+    color:white;
+    padding:12px 30px;
+    border-radius:4px;
+}
+
+.btn-red:hover{
+    background:#900;
+}
+
+.btn-whatsapp{
+
+    display:inline-block;
+    margin-top:20px;
+    margin-left:10px;
+    background:#25D366;
+    color:white;
+    padding:12px 30px;
+    border-radius:4px;
+}
+
+/* ===== COMMON ===== */
+
+section{
+
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+h2{
+
+    text-align:center;
+    color:#b30000;
+    margin-bottom:40px;
 }
 
 /* ===== PRODUCTS ===== */
-section {
-  padding: 60px 20px;
-  max-width: 1100px;
-  margin: auto;
+
+.products{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
-h2 {
-  text-align: center;
-  color: #b30000;
+.card{
+
+    background:#111;
+    border:1px solid #222;
+    border-radius:10px;
+    overflow:hidden;
+    transition:.3s;
 }
 
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+.card:hover{
+
+    transform:translateY(-6px);
+    border-color:#b30000;
 }
 
-.card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: 0.3s;
+.card img{
+
+    width:100%;
+    height:220px;
+    object-fit:cover;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #b30000;
+.card h3{
+
+    text-align:center;
+    margin:18px 0 5px;
 }
 
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
+.card p{
+
+    text-align:center;
+    color:#bbb;
+    margin-bottom:20px;
 }
 
 /* ===== STRIP ===== */
-.strip {
-  background: #0d0d0d;
-  text-align: center;
-  padding: 40px;
+
+.strip{
+
+    background:#111;
+    text-align:center;
+    padding:50px 20px;
 }
 
 /* ===== CONTACT ===== */
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  background: #111;
-  border: 1px solid #444;
-  color: #fff;
+
+input,
+textarea{
+
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    background:#111;
+    color:white;
+    border:1px solid #444;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background: #b30000;
-  color: white;
-  border: none;
+button{
+
+    width:100%;
+    background:#b30000;
+    color:white;
+    border:none;
+    padding:12px;
+    cursor:pointer;
 }
 
 /* ===== MAP ===== */
-.map iframe {
-  width: 100%;
-  height: 300px;
-  border: 0;
+
+.map iframe{
+
+    width:100%;
+    height:320px;
+    border:none;
 }
 
 /* ===== FOOTER ===== */
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
+
+footer{
+
+    text-align:center;
+    padding:25px;
+    color:#888;
 }
 
-/* ===== WHATSAPP FLOAT ===== */
-.whatsapp {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  padding: 12px;
-  border-radius: 50px;
-  color: white;
+/* ===== WHATSAPP ===== */
+
+.whatsapp{
+
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#25D366;
+    color:white;
+    padding:14px 18px;
+    border-radius:40px;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+nav{
+
+    flex-direction:column;
+    gap:15px;
+}
+
+.hero h1{
+
+    font-size:42px;
+}
+
 }
 
 </style>
+
 </head>
-/* ===== To handle catalogue folder ===== */
-<script>
 
-fetch("catalogue.json")
-    .then(response => response.json())
-    .then(data => {
-
-        const container = document.getElementById("products");
-
-        data.forEach(category => {
-
-            const firstCatalogue = category.catalogues[0];
-
-            container.innerHTML += `
-                <a href="catalogue.html?category=${encodeURIComponent(category.category)}">
-                    <div class="card">
-                        <img src="${category.image}" alt="${category.category}" loading="lazy">
-                        <h3>${category.category}</h3>
-                        <p style="padding:0 15px 15px;color:#aaa;">
-                            ${category.catalogues.length} Collection${category.catalogues.length > 1 ? "s" : ""}
-                        </p>
-                    </div>
-                </a>
-            `;
-
-        });
-
-    })
-    .catch(error => {
-
-        console.error(error);
-
-        document.getElementById("products").innerHTML =
-            "<p>Unable to load catalogue.</p>";
-
-    });
-
-</script>
-  
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <div class="logo">KALAKARIYA&reg;</div>
-  <div>
-    <a href="#">Home</a>
-    <a href="catalogue.html">Catalogue</a>
-    <a href="about.html">About</a>
-    <a href="#contact">Contact</a>
-  </div>
+
+<div class="logo">
+KALAKARIYA®
+</div>
+
+<div>
+
+<a href="#">Home</a>
+
+<a href="catalogue.html">Catalogue</a>
+
+<a href="about.html">About</a>
+
+<a href="#contact">Contact</a>
+
+</div>
+
 </nav>
 
-<!-- HERO -->
 <header>
-  <div class="hero">
-    <h1>KALAKARIYA&reg;</h1>
-    <p>
-      Redefining Comfort & Elegance in Every Home.<br>
-      Discover premium fabrics, timeless designs, and curated collections 
-      crafted to transform your living spaces into a statement of style.
-    </p>
 
-    <a href="catalogue.html" class="btn-red">View Collection</a>
-    <a href="https://wa.me/919034840539" class="btn-whatsapp">💬 WhatsApp</a>
-  </div>
+<div class="hero">
+
+<h1>KALAKARIYA®</h1>
+
+<p>
+
+Redefining Comfort & Elegance in Every Home.
+
+Discover premium fabrics, timeless designs and curated collections crafted to transform every space.
+
+</p>
+
+<a href="catalogue.html" class="btn-red">
+View Collection
+</a>
+
+<a href="https://wa.me/919034840539" class="btn-whatsapp">
+
+💬 WhatsApp
+
+</a>
+
+</div>
+
 </header>
 
-<!-- PRODUCTS -->
-<!-- PRODUCTS -->
 <section>
-    <h2>Our Collection</h2>
 
-    <div class="products" id="products"></div>
+<h2>Our Collection</h2>
+
+<div class="products" id="products">
+
+<!-- Loaded automatically from catalogue.json -->
+
+</div>
 
 </section>
 
-<!-- STRIP -->
 <div class="strip">
-  <h2>Explore Full Collection</h2>
-  <a href="catalogue.html" class="btn-red">Download Catalogue</a>
+
+<h2>Explore Full Collection</h2>
+
+<a href="catalogue.html" class="btn-red">
+
+Browse Catalogues
+
+</a>
+
 </div>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Contact Us</h2>
 
-  <p style="text-align:center; color:#ccc;">
-    📍 Manmohan Nagar, Babail Road, Panipat, Haryana
-  </p>
+    <h2>Contact Us</h2>
 
-  <!-- MAP -->
-  <div class="map">
-    <iframe 
-      src="https://maps.google.com/maps?q=Panipat%20Haryana&t=&z=13&ie=UTF8&iwloc=&output=embed">
-    </iframe>
-  </div>
+    <p style="text-align:center;color:#ccc;font-size:18px;">
+        📍 Manmohan Nagar, Babail Road, Panipat, Haryana
+    </p>
 
-  <!-- FORM -->
-  <form action="https://formspree.io/f/yourformid" method="POST">
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Message"></textarea>
-    <button>Send Inquiry</button>
-  </form>
+    <div class="map">
+
+        <iframe
+            src="https://maps.google.com/maps?q=Manmohan%20Nagar%20Babail%20Road%20Panipat&t=&z=14&ie=UTF8&iwloc=&output=embed"
+            loading="lazy">
+        </iframe>
+
+    </div>
+
+    <br><br>
+
+    <form action="https://formspree.io/f/yourformid" method="POST">
+
+        <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            required>
+
+        <textarea
+            name="message"
+            rows="6"
+            placeholder="Tell us what you're looking for..."></textarea>
+
+        <button type="submit">
+
+            Send Inquiry
+
+        </button>
+
+    </form>
+
 </section>
 
 <!-- FOOTER -->
+
 <footer>
-  <p>© 2026 Kalakariya&reg;. All Rights Reserved.</p>
-  <p>📍 Manmohan Nagar, Babail Road, Panipat, Haryana</p>
-  <p style="font-size:12px;">Powered by Satkartar Handloom</p>
-  <p style="font-size:12px;">
-    Disclaimer: Product images are for representation purposes only.
-  </p>
+
+    <h3 style="color:#b30000;margin-bottom:10px;">
+
+        KALAKARIYA®
+
+    </h3>
+
+    <p>
+
+        Premium Curtains • Bedsheets • Comforters • Sofa Fabrics • Wedding Sets
+
+    </p>
+
+    <p>
+
+        📍 Manmohan Nagar, Babail Road, Panipat, Haryana
+
+    </p>
+
+    <p>
+
+        📞 +91 90348 40539
+
+    </p>
+
+    <p>
+
+        © 2026 Kalakariya®. All Rights Reserved.
+
+    </p>
+
+    <p style="font-size:12px;color:#777;">
+
+        Powered by Satkartar Handloom
+
+    </p>
+
 </footer>
 
-<!-- FLOAT -->
-<a href="https://wa.me/919034840539" class="whatsapp">Chat</a>
+<!-- WHATSAPP FLOAT -->
+
+<a
+href="https://wa.me/919034840539"
+target="_blank"
+class="whatsapp">
+
+Chat
+
+</a>
+
+<!-- ========================= -->
+<!-- LOAD CATALOGUE FROM JSON -->
+<!-- ========================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    fetch("catalogue.json")
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error("Unable to load catalogue.json");
+            }
+
+            return response.json();
+
+        })
+        .then(data => {
+
+            const container = document.getElementById("products");
+
+            container.innerHTML = "";
+
+            data.forEach(category => {
+
+                const total = category.catalogues
+                    ? category.catalogues.length
+                    : 0;
+
+                container.innerHTML += `
+
+                    <a href="catalogue.html?category=${encodeURIComponent(category.category)}">
+
+                        <div class="card">
+
+                            <img
+                                src="${category.image}"
+                                alt="${category.category}"
+                                loading="lazy">
+
+                            <h3>${category.category}</h3>
+
+                            <p>
+
+                                ${total} Collection${total !== 1 ? "s" : ""}
+
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                `;
+
+            });
+
+        })
+
+        .catch(error => {
+
+            console.error(error);
+
+            document.getElementById("products").innerHTML =
+
+            `
+                <div style="
+                    background:#111;
+                    padding:30px;
+                    border-radius:8px;
+                    text-align:center;
+                    color:#ccc;">
+                    Unable to load catalogue.
+                </div>
+            `;
+
+        });
+
+});
+
+</script>
 
 </body>
-</html>
+
+</html>  
