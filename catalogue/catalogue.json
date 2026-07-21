@@ -1,26 +1,27 @@
 [
-    {
-        "category": "Bedsheets",
-        "image": "images/bedsheet.JPG",
-        "catalogues": [
-            {
-                "title": "M2K Mulberry",
-                "pdf": "catalogue/bedsheets/M2K Mulberry Part1.pdf"
-            },
-            {
-                "title": "M2K Mulberry",
-                "pdf": "catalogue/bedsheets/M2K Mulberry Part2.pdf"
-            }
-        ]
-    },
-    {
-        "category": "Curtains",
-        "image": "images/curtains.jpg",
-        "catalogues": [
-            {
-                "title": "Designer Curtains",
-                "pdf": "catalogue/curtains/Designer Curtains.pdf"
-            }
-        ]
-    }
+  {
+    "category": "Bedsheets",
+    "catalogues": [
+      {
+        "title": "M2K Mulberry Part 1",
+        "cover": "catalogue/bedsheets/M2K Mulberry Part1.jpg",
+        "pdf": "catalogue/bedsheets/M2K Mulberry Part1.pdf"
+      },
+      {
+        "title": "M2K Mulberry Part 2",
+        "cover": "catalogue/bedsheets/M2K Mulberry Part2.jpg",
+        "pdf": "catalogue/bedsheets/M2K Mulberry Part2.pdf"
+      }
+    ]
+  },
+  {
+    "category": "Curtains",
+    "catalogues": [
+      {
+        "title": "Designer Curtains",
+        "cover": "catalogue/curtains/Designer Curtains.jpg",
+        "pdf": "catalogue/curtains/Designer Curtains.pdf"
+      }
+    ]
+  }
 ]
