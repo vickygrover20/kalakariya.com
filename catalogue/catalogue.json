@@ -4,12 +4,12 @@
     "catalogues": [
       {
         "title": "M2K Mulberry Part 1",
-        "cover": "catalogue/bedsheets/M2K Mulberry Part1.JPG",
+        "cover": "catalogue/bedsheets/M2K Mulberry Part1.jpg",
         "pdf": "catalogue/bedsheets/M2K Mulberry Part1.pdf"
       },
       {
         "title": "M2K Mulberry Part 2",
-        "cover": "catalogue/bedsheets/M2K Mulberry Part2.JPG",
+        "cover": "catalogue/bedsheets/M2K Mulberry Part2.jpg",
         "pdf": "catalogue/bedsheets/M2K Mulberry Part2.pdf"
       }
     ]
