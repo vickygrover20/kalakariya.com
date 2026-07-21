@@ -1,188 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Catalogue | Kalakariya®</title>
-
-<style>
-
-body{
-    margin:0;
-    background:#000;
-    color:white;
-    font-family:'Segoe UI',sans-serif;
-}
-
-nav{
-    background:#111;
-    padding:18px;
-    text-align:center;
-}
-
-nav a{
-    color:white;
-    margin:0 15px;
-    text-decoration:none;
-}
-
-nav a:hover{
-    color:#b30000;
-}
-
-h1{
-    text-align:center;
-    color:#b30000;
-    margin:40px 0;
-}
-
-.category{
-    max-width:1200px;
-    margin:50px auto;
-}
-
-.category h2{
-    color:#fff;
-    border-left:5px solid #b30000;
-    padding-left:15px;
-}
-
-.grid{
-
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-    margin-top:25px;
-
-}
-
-.card{
-
-    background:#111;
-    border:1px solid #222;
-    border-radius:10px;
-    overflow:hidden;
-    transition:.3s;
-
-}
-
-.card:hover{
-
-    transform:translateY(-6px);
-    border-color:#b30000;
-    box-shadow:0 15px 35px rgba(179,0,0,.25);
-
-}
-
-.card img{
-
-    width:100%;
-    height:230px;
-    object-fit:cover;
-
-}
-
-.content{
-
-    padding:20px;
-    text-align:center;
-
-}
-
-.content h3{
-
-    margin-top:0;
-    color:white;
-
-}
-
-.btn{
-
-    display:inline-block;
-    margin:8px;
-    padding:10px 20px;
-    border-radius:5px;
-    text-decoration:none;
-    color:white;
-
-}
-
-.view{
-
-    background:#b30000;
-
-}
-
-.download{
-
-    background:#25D366;
-
-}
-
-footer{
-
-    text-align:center;
-    padding:40px;
-    color:#888;
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="about.html">About</a>
-
-</nav>
-
-<h1>Our Catalogue</h1>
-
-<div id="catalogues"></div>
-
-<footer>
-
-© 2026 Kalakariya®
-
-</footer>
-
-<script>
-
 fetch("catalogue/catalogue.json")
 
-.then(response=>response.json())
+.then(response => response.json())
 
-.then(data=>{
+.then(data => {
 
-    const container=document.getElementById("catalogues");
+    const container = document.getElementById("catalogues");
 
-    data.forEach(category=>{
+    container.innerHTML = "";
 
-        let html=`
+    data.forEach(category => {
 
+        let html = `
         <div class="category">
-
-        <h2>${category.category}</h2>
-
-        <div class="grid">
-
+            <h2>${category.category}</h2>
+            <div class="grid">
         `;
 
-        category.catalogues.forEach(item=>{
+        category.catalogues.forEach(item => {
 
-            html+=`
+            html += `
 
             <div class="card">
 
-                <img src="${category.image}" alt="${category.category}">
+                <img src="${item.cover}"
+                     alt="${item.title}"
+                     loading="lazy">
 
                 <div class="content">
 
@@ -191,17 +33,13 @@ fetch("catalogue/catalogue.json")
                     <a class="btn view"
                        href="${item.pdf}"
                        target="_blank">
-
                        View Catalogue
-
                     </a>
 
                     <a class="btn download"
                        href="${item.pdf}"
                        download>
-
                        Download
-
                     </a>
 
                 </div>
@@ -212,32 +50,23 @@ fetch("catalogue/catalogue.json")
 
         });
 
-        html+=`
-
+        html += `
+            </div>
         </div>
-
-        </div>
-
         `;
 
-        container.innerHTML+=html;
+        container.innerHTML += html;
 
     });
 
 })
 
-.catch(error=>{
+.catch(error => {
 
-document.getElementById("catalogues").innerHTML=
+    console.error(error);
 
-"<h2 style='text-align:center;color:red;'>Unable to load catalogue.</h2>";
+    document.getElementById("catalogues").innerHTML =
 
-console.error(error);
+    "<h2 style='text-align:center;color:red;'>Unable to load catalogue.</h2>";
 
 });
-
-</script>
-
-</body>
-
-</html>
