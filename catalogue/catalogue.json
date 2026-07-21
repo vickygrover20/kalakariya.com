@@ -1,6 +1,7 @@
 [
   {
     "category": "Bedsheets",
+    "image": "catalogue/bedsheets/M2K Mulberry Part1.JPG",
     "catalogues": [
       {
         "title": "M2K Mulberry Part 1",
@@ -16,6 +17,7 @@
   },
   {
     "category": "Curtains",
+    "image": "catalogue/curtains/Designer Curtains.jpg",
     "catalogues": [
       {
         "title": "Designer Curtains",
