@@ -1,1 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Kalakariya Inventory</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f5f5;
+        color: #222;
+    }
+
+    /* HEADER */
+    header {
+        background: #000;
+        color: white;
+        padding: 18px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 4px solid #b30000;
+    }
+
+    .logo {
+        font-size: 25px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .logo span {
+        color: #d40000;
+    }
+
+    .inventory-title {
+        font-size: 14px;
+        color: #ddd;
+    }
+
+    /* MAIN */
+    .container {
+        max-width: 1200px;
+        margin: 25px auto;
+        padding: 0 18px;
+    }
+
+    h1 {
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    /* DASHBOARD */
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card-title {
+        color: #777;
+        font-size: 14px;
+    }
+
+    .card-value {
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 8px;
+    }
+
+    .red {
+        color: #b30000;
+    }
+
+    /* BUTTONS */
+    button {
+        border: none;
+        border-radius: 6px;
+        padding: 11px 17px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        background: #b30000;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #8f0000;
+    }
+
+    .btn-dark {
+        background: #111;
+        color: white;
+    }
+
+    .btn-green {
+        background: #197a30;
+        color: white;
+    }
+
+    .btn-orange {
+        background: #d17a00;
+        color: white;
+    }
+
+    .btn-gray {
+        background: #ddd;
+        color: #222;
+    }
+
+    .action-bar {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    /* SEARCH */
+    .search-box {
+        background: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+
+    /* TABLE */
+    .table-container {
+        background: white;
+        border-radius: 10px;
+        overflow-x: auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background: #111;
+        color: white;
+        text-align: left;
+        padding: 13px;
+        font-size: 13px;
+    }
+
+    td {
+        padding: 13px;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+    }
+
+    tr:hover {
+        background: #fafafa;
+    }
+
+    .stock-low {
+        color: #b30000;
+        font-weight: bold;
+    }
+
+    .stock-ok {
+        color: #197a30;
+        font-weight: bold;
+    }
+
+    .small-btn {
+        padding: 7px 10px;
+        font-size: 12px;
+        margin-right: 4px;
+    }
+
+    /* MODAL */
+    .modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.65);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .modal-content {
+        background: white;
+        width: 100%;
+        max-width: 500px;
+        border-radius: 12px;
+        padding: 25px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .modal-content h2 {
+        margin-top: 0;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    .modal-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    /* HISTORY */
+    .history {
+        margin-top: 30px;
+    }
+
+    .history h2 {
+        margin-bottom: 10px;
+    }
+
+    .empty {
+        text-align: center;
+        color: #777;
+        padding: 30px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 800px) {
+        .dashboard {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        header {
+            padding: 15px;
+        }
+
+        .logo {
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .dashboard {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .card {
+            padding: 14px;
+        }
+
+        .card-value {
+            font-size: 24px;
+        }
+
+        .action-bar button {
+            width: 100%;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        KALAKARIYA<span>®</span>
+    </div>
+
+    <div class="inventory-title">
+        Stock & Inventory Management
+    </div>
+</header>
+
+
+<div class="container">
+
+    <h1>Inventory Dashboard</h1>
+    <div class="subtitle">
+        Manage your products and stock
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <div class="dashboard">
+
+        <div class="card">
+            <div class="card-title">Total Products</div>
+            <div class="card-value" id="totalProducts">0</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Total Stock</div>
+            <div class="card-value" id="totalStock">0</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Low Stock</div>
+            <div class="card-value red" id="lowStock">0</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Transactions</div>
+            <div class="card-value" id="totalTransactions">0</div>
+        </div>
+
+    </div>
+
+
+    <!-- ACTION BUTTONS -->
+    <div class="action-bar">
+
+        <button class="btn-primary" onclick="openProductModal()">
+            + Add Product
+        </button>
+
+        <button class="btn-green" onclick="openStockModal('IN')">
+            + Stock In
+        </button>
+
+        <button class="btn-orange" onclick="openStockModal('OUT')">
+            - Stock Out
+        </button>
+
+        <button class="btn-dark" onclick="showHistory()">
+            Stock History
+        </button>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by product name, SKU or category..."
+            oninput="displayProducts()"
+        >
+
+    </div>
+
+
+    <!-- PRODUCT TABLE -->
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>SKU</th>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Size</th>
+                    <th>Stock</th>
+                    <th>Min Stock</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="productTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- HISTORY -->
+    <div class="history" id="historySection" style="display:none;">
+
+        <h2>Stock History</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>SKU</th>
+                        <th>Product</th>
+                        <th>Type</th>
+                        <th>Quantity</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+
+                <tbody id="historyTable">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ADD PRODUCT MODAL -->
+<div class="modal" id="productModal">
+
+    <div class="modal-content">
+
+        <h2>Add Product</h2>
+
+        <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" id="productName"
+                   placeholder="Example: Bedsheet">
+        </div>
+
+        <div class="form-group">
+            <label>SKU / Product Code</label>
+            <input type="text" id="productSku"
+                   placeholder="Example: BS001">
+        </div>
+
+        <div class="form-group">
+            <label>Category</label>
+
+            <select id="productCategory">
+
+                <option value="">Select Category</option>
+                <option>Bedsheets</option>
+                <option>Comforter Sets</option>
+                <option>Gift Sets</option>
+                <option>AC Dohar</option>
+                <option>Curtains</option>
+                <option>Sofa Fabric</option>
+                <option>Other</option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label>Size</label>
+            <input type="text" id="productSize"
+                   placeholder="Example: King">
+        </div>
+
+        <div class="form-group">
+            <label>Opening Stock</label>
+            <input type="number" id="openingStock"
+                   min="0"
+                   value="0">
+        </div>
+
+        <div class="form-group">
+            <label>Minimum Stock Alert</label>
+            <input type="number" id="minimumStock"
+                   min="0"
+                   value="10">
+        </div>
+
+        <div class="modal-buttons">
+
+            <button class="btn-primary"
+                    onclick="saveProduct()">
+                Save Product
+            </button>
+
+            <button class="btn-gray"
+                    onclick="closeProductModal()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- STOCK MODAL -->
+<div class="modal" id="stockModal">
+
+    <div class="modal-content">
+
+        <h2 id="stockModalTitle">Stock</h2>
+
+        <div class="form-group">
+
+            <label>Product</label>
+
+            <select id="stockProduct">
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Quantity</label>
+
+            <input type="number"
+                   id="stockQuantity"
+                   min="1"
+                   placeholder="Enter quantity">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Remarks</label>
+
+            <input type="text"
+                   id="stockRemarks"
+                   placeholder="Optional">
+
+        </div>
+
+        <div class="modal-buttons">
+
+            <button id="stockSaveButton"
+                    class="btn-primary"
+                    onclick="saveStockTransaction()">
+                Save
+            </button>
+
+            <button class="btn-gray"
+                    onclick="closeStockModal()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   DATA STORAGE
+========================================= */
+
+let products =
+    JSON.parse(localStorage.getItem("kalakariyaProducts")) || [];
+
+let transactions =
+    JSON.parse(localStorage.getItem("kalakariyaTransactions")) || [];
+
+let currentTransactionType = "IN";
+
+
+/* =========================================
+   SAVE DATA
+========================================= */
+
+function saveData() {
+
+    localStorage.setItem(
+        "kalakariyaProducts",
+        JSON.stringify(products)
+    );
+
+    localStorage.setItem(
+        "kalakariyaTransactions",
+        JSON.stringify(transactions)
+    );
+
+}
+
+
+/* =========================================
+   PRODUCT MODAL
+========================================= */
+
+function openProductModal() {
+
+    document.getElementById("productModal").style.display = "flex";
+
+}
+
+
+function closeProductModal() {
+
+    document.getElementById("productModal").style.display = "none";
+
+}
+
+
+/* =========================================
+   SAVE PRODUCT
+========================================= */
+
+function saveProduct() {
+
+    const name =
+        document.getElementById("productName").value.trim();
+
+    const sku =
+        document.getElementById("productSku").value.trim().toUpperCase();
+
+    const category =
+        document.getElementById("productCategory").value;
+
+    const size =
+        document.getElementById("productSize").value.trim();
+
+    const openingStock =
+        Number(document.getElementById("openingStock").value);
+
+    const minimumStock =
+        Number(document.getElementById("minimumStock").value);
+
+
+    if (!name || !sku || !category) {
+
+        alert("Please enter Product Name, SKU and Category.");
+
+        return;
+    }
+
+
+    /* Check duplicate SKU */
+
+    const existing =
+        products.find(p => p.sku === sku);
+
+    if (existing) {
+
+        alert("This SKU already exists.");
+
+        return;
+    }
+
+
+    const product = {
+
+        id: Date.now(),
+
+        name: name,
+
+        sku: sku,
+
+        category: category,
+
+        size: size,
+
+        stock: openingStock,
+
+        minimumStock: minimumStock
+
+    };
+
+
+    products.push(product);
+
+
+    /* Opening stock transaction */
+
+    if (openingStock > 0) {
+
+        transactions.push({
+
+            id: Date.now(),
+
+            date: new Date().toLocaleString(),
+
+            sku: sku,
+
+            product: name,
+
+            type: "OPENING",
+
+            quantity: openingStock,
+
+            balance: openingStock,
+
+            remarks: "Opening stock"
+
+        });
+
+    }
+
+
+    saveData();
+
+    closeProductModal();
+
+    clearProductForm();
+
+    displayProducts();
+
+    updateDashboard();
+
+}
+
+
+/* =========================================
+   CLEAR PRODUCT FORM
+========================================= */
+
+function clearProductForm() {
+
+    document.getElementById("productName").value = "";
+
+    document.getElementById("productSku").value = "";
+
+    document.getElementById("productCategory").value = "";
+
+    document.getElementById("productSize").value = "";
+
+    document.getElementById("openingStock").value = 0;
+
+    document.getElementById("minimumStock").value = 10;
+
+}
+
+
+/* =========================================
+   STOCK MODAL
+========================================= */
+
+function openStockModal(type) {
+
+    currentTransactionType = type;
+
+
+    const title =
+        type === "IN"
+        ? "Stock In"
+        : "Stock Out";
+
+
+    document.getElementById("stockModalTitle").innerText =
+        title;
+
+
+    const select =
+        document.getElementById("stockProduct");
+
+
+    select.innerHTML = "";
+
+
+    if (products.length === 0) {
+
+        alert("Please create a product first.");
+
+        return;
+    }
+
+
+    products.forEach(product => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = product.sku;
+
+        option.textContent =
+            `${product.sku} - ${product.name} (${product.stock})`;
+
+        select.appendChild(option);
+
+    });
+
+
+    document.getElementById("stockQuantity").value = "";
+
+    document.getElementById("stockRemarks").value = "";
+
+
+    document.getElementById("stockModal").style.display =
+        "flex";
+
+}
+
+
+function closeStockModal() {
+
+    document.getElementById("stockModal").style.display =
+        "none";
+
+}
+
+
+/* =========================================
+   SAVE STOCK TRANSACTION
+========================================= */
+
+function saveStockTransaction() {
+
+    const sku =
+        document.getElementById("stockProduct").value;
+
+    const quantity =
+        Number(document.getElementById("stockQuantity").value);
+
+    const remarks =
+        document.getElementById("stockRemarks").value.trim();
+
+
+    if (!quantity || quantity <= 0) {
+
+        alert("Please enter a valid quantity.");
+
+        return;
+    }
+
+
+    const product =
+        products.find(p => p.sku === sku);
+
+
+    if (!product) {
+
+        alert("Product not found.");
+
+        return;
+    }
+
+
+    /* STOCK IN */
+
+    if (currentTransactionType === "IN") {
+
+        product.stock += quantity;
+
+    }
+
+
+    /* STOCK OUT */
+
+    else {
+
+        if (quantity > product.stock) {
+
+            alert(
+                `Not enough stock.\n\nAvailable: ${product.stock}`
+            );
+
+            return;
+        }
+
+        product.stock -= quantity;
+
+    }
+
+
+    transactions.push({
+
+        id: Date.now(),
+
+        date: new Date().toLocaleString(),
+
+        sku: product.sku,
+
+        product: product.name,
+
+        type: currentTransactionType,
+
+        quantity: quantity,
+
+        balance: product.stock,
+
+        remarks: remarks
+
+    });
+
+
+    saveData();
+
+    closeStockModal();
+
+    displayProducts();
+
+    updateDashboard();
+
+    displayHistory();
+
+}
+
+
+/* =========================================
+   DISPLAY PRODUCTS
+========================================= */
+
+function displayProducts() {
+
+    const table =
+        document.getElementById("productTable");
+
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    table.innerHTML = "";
+
+
+    const filtered =
+        products.filter(product =>
+
+            product.name.toLowerCase().includes(search) ||
+
+            product.sku.toLowerCase().includes(search) ||
+
+            product.category.toLowerCase().includes(search)
+
+        );
+
+
+    if (filtered.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+                <td colspan="8" class="empty">
+                    No products found
+                </td>
+            </tr>
+
+        `;
+
+        return;
+    }
+
+
+    filtered.forEach(product => {
+
+        const low =
+            product.stock <= product.minimumStock;
+
+
+        const row =
+            document.createElement("tr");
+
+
+        row.innerHTML = `
+
+            <td><strong>${product.sku}</strong></td>
+
+            <td>${product.name}</td>
+
+            <td>${product.category}</td>
+
+            <td>${product.size || "-"}</td>
+
+            <td><strong>${product.stock}</strong></td>
+
+            <td>${product.minimumStock}</td>
+
+            <td class="${low ? "stock-low" : "stock-ok"}">
+                ${low ? "LOW STOCK" : "OK"}
+            </td>
+
+            <td>
+
+                <button
+                    class="small-btn btn-green"
+                    onclick="quickStock('IN','${product.sku}')">
+                    +
+                </button>
+
+                <button
+                    class="small-btn btn-orange"
+                    onclick="quickStock('OUT','${product.sku}')">
+                    -
+                </button>
+
+            </td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================================
+   QUICK STOCK
+========================================= */
+
+function quickStock(type, sku) {
+
+    openStockModal(type);
+
+    setTimeout(() => {
+
+        document.getElementById("stockProduct").value = sku;
+
+    }, 50);
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+function updateDashboard() {
+
+    document.getElementById("totalProducts").innerText =
+        products.length;
+
+
+    const totalStock =
+        products.reduce(
+            (sum, product) =>
+                sum + product.stock,
+            0
+        );
+
+
+    document.getElementById("totalStock").innerText =
+        totalStock;
+
+
+    const lowStock =
+        products.filter(
+            product =>
+                product.stock <= product.minimumStock
+        ).length;
+
+
+    document.getElementById("lowStock").innerText =
+        lowStock;
+
+
+    document.getElementById("totalTransactions").innerText =
+        transactions.length;
+
+}
+
+
+/* =========================================
+   HISTORY
+========================================= */
+
+function showHistory() {
+
+    const section =
+        document.getElementById("historySection");
+
+
+    section.style.display = "block";
+
+    displayHistory();
+
+
+    section.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+function displayHistory() {
+
+    const table =
+        document.getElementById("historyTable");
+
+
+    table.innerHTML = "";
+
+
+    if (transactions.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+                <td colspan="6" class="empty">
+                    No transactions yet
+                </td>
+            </tr>
+
+        `;
+
+        return;
+    }
+
+
+    const reversed =
+        [...transactions].reverse();
+
+
+    reversed.forEach(transaction => {
+
+        const row =
+            document.createElement("tr");
+
+
+        let typeText = transaction.type;
+
+
+        if (transaction.type === "IN") {
+
+            typeText = "Stock In";
+
+        }
+
+        if (transaction.type === "OUT") {
+
+            typeText = "Stock Out";
+
+        }
+
+        if (transaction.type === "OPENING") {
+
+            typeText = "Opening Stock";
+
+        }
+
+
+        row.innerHTML = `
+
+            <td>${transaction.date}</td>
+
+            <td>${transaction.sku}</td>
+
+            <td>${transaction.product}</td>
+
+            <td>${typeText}</td>
+
+            <td>${transaction.quantity}</td>
+
+            <td><strong>${transaction.balance}</strong></td>
+
+        `;
+
+
+        table.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
+
+displayProducts();
+
+updateDashboard();
+
+displayHistory();
+
+</script>
+
+</body>
+</html>
